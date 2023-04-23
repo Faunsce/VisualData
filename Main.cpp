@@ -36,7 +36,7 @@ int main()
 	
 	anna::displayData(numberArray);
 
-	std::cin.ignore(5); https://i.imgur.com/p9tIxnO.png
+	std::cin.ignore(5);
 
 	return 0;
 

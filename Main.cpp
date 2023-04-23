@@ -33,26 +33,28 @@ int main()
 	
 	anna::displayData(numberArray);
 
+	std::cin.ignore(5);
+
 }
 
 
 namespace anna {
 	void displayData(std::vector<int> data) {
-		std::string topLine("╔");
-		std::string midLine("║");
-		std::string botLine("╚");
+		std::wstring topLine(L"╔");
+		std::wstring midLine(L"║");
+		std::wstring botLine(L"╚");
 
 		for (auto&& value : data) {
-			topLine = topLine + "═";
-			midLine = midLine + std::to_string(value);
-			botLine = botLine + "═";
+			topLine = topLine + L"═";
+			midLine = midLine + std::to_wstring(value);
+			botLine = botLine + L"═";
 		}
 
-		topLine = topLine + "╗";
-		midLine = midLine + "║";
-		botLine = botLine + "╝";
+		topLine = topLine + L"╗";
+		midLine = midLine + L"║";
+		botLine = botLine + L"╝";
 
-		std::cout
+		std::wcout
 			<< topLine << "\n"
 			<< midLine << "\n"
 			<< botLine << "\n";

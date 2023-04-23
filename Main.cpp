@@ -73,14 +73,21 @@ int main()
 
 namespace anna {
 	void displayData(std::vector<int> data) {
+		
 		std::wstring topLine(L"╔");
 		std::wstring midLine(L"║");
 		std::wstring botLine(L"╚");
 
-		for (auto&& value : data) {
-			topLine = topLine + L"═";
-			midLine = midLine + std::to_wstring(value);
-			botLine = botLine + L"═";
+		std::wstring stringData; 
+		for (auto&& slot : data) {
+			stringData += std::to_wstring(slot);
+		}
+
+		for (auto&& value : stringData) {
+			topLine += L"═";
+			midLine += value;
+			botLine += L"═";
+			
 		}
 
 		topLine = topLine + L"╗";

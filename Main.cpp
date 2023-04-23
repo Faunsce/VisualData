@@ -1,12 +1,15 @@
-// STD Includes
+﻿// STD Includes
 #include <iostream>
+#include <string>
 #include <vector>
 #include <algorithm>
 #include <random>
 #include <chrono>
 
 
-// Personal Includes
+namespace anna {
+	void displayData(std::vector<int> data);
+}
 
 
 int main()
@@ -31,4 +34,13 @@ int main()
 		std::cout << "[" << number << "]";
 	}
 	std::cout << std::endl;
+}
+
+
+namespace anna {
+	void displayData(std::vector<int> data) {
+		std::string topLine{ "╔═╗" };
+		std::string midLine{ "║5║" };
+		std::string botLine{ "╚═╝" };
+	}
 }

@@ -52,7 +52,7 @@ namespace anna {
 
 		std::wstring stringData; 
 		for (auto&& slot : data) {
-			stringData += std::to_wstring(slot);
+			stringData += (L" [" + std::to_wstring(slot) + L"] ");
 		}
 
 		for (auto&& value : stringData) {

@@ -23,24 +23,39 @@ int main()
 		numberArray.push_back(i);
 	}
 
+	anna::displayData(numberArray);
+
 	std::shuffle(numberArray.begin(), numberArray.end(), std::default_random_engine(seed));
-	for (auto&& number : numberArray) {
-		std::cout << "[" << number << "]";
-	}
-	std::cout << std::endl;
+
+	anna::displayData(numberArray);
 
 	std::sort(numberArray.begin(), numberArray.end());
-	for (auto&& number : numberArray) {
-		std::cout << "[" << number << "]";
-	}
-	std::cout << std::endl;
+	
+	anna::displayData(numberArray);
+
 }
 
 
 namespace anna {
 	void displayData(std::vector<int> data) {
-		std::string topLine{ "╔═╗" };
-		std::string midLine{ "║5║" };
-		std::string botLine{ "╚═╝" };
+		std::string topLine("╔");
+		std::string midLine("║");
+		std::string botLine("╚");
+
+		for (auto&& value : data) {
+			topLine = topLine + "═";
+			midLine = midLine + std::to_string(value);
+			botLine = botLine + "═";
+		}
+
+		topLine = topLine + "╗";
+		midLine = midLine + "║";
+		botLine = botLine + "╝";
+
+		std::cout
+			<< topLine << "\n"
+			<< midLine << "\n"
+			<< botLine << "\n";
+
 	}
 }

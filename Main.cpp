@@ -12,6 +12,7 @@
 namespace anna 
 {
 	void displayData(std::vector<int> data);
+	void bubbleSort(std::vector<int> numberArray);
 }
 
 
@@ -34,32 +35,8 @@ int main()
 	std::shuffle(numberArray.begin(), numberArray.end(), std::default_random_engine(seed));
 
 	anna::displayData(numberArray);
-	/*
-	start at beginning of array
-	move towards reducing size end
-	swap largest element, to front
-	now sorted front can be ignored
-	*/
 
-	for (int arrayEnd = numberArray.size() - 1; arrayEnd > 0; arrayEnd--)
-	{
-		static int swaps = 0;
-		static int checks = 0;
-		bool sorted = true;
-		for (int arrayScan = 0; arrayScan < numberArray.size() - 1; arrayScan++)
-		{
-			checks++;
-			if (numberArray[arrayScan] > numberArray[arrayScan + 1])
-			{
-				swaps++;
-				sorted = false;
-				std::swap(numberArray[arrayScan], numberArray[arrayScan + 1]);
-				anna::displayData(numberArray);
-			}
-		}
-		//std::wcout << L"Checks :" << std::to_wstring(checks) << L"  Swaps :" << std::to_wstring(swaps) << L"\n";
-		if (sorted) break;
-	}
+	anna::bubbleSort(numberArray);
 
 	anna::displayData(numberArray);
 
@@ -102,5 +79,27 @@ namespace anna
 			<< midLine << L"\n"
 			<< botLine << L"\n";
 
+	}
+
+	void bubbleSort(std::vector<int> numberArray) {
+		for (int arrayEnd = numberArray.size() - 1; arrayEnd > 0; arrayEnd--)
+		{
+			static int swaps = 0;
+			static int checks = 0;
+			bool sorted = true;
+			for (int arrayScan = 0; arrayScan < numberArray.size() - 1; arrayScan++)
+			{
+				checks++;
+				if (numberArray[arrayScan] > numberArray[arrayScan + 1])
+				{
+					swaps++;
+					sorted = false;
+					std::swap(numberArray[arrayScan], numberArray[arrayScan + 1]);
+					anna::displayData(numberArray);
+				}
+			}
+			//std::wcout << L"Checks :" << std::to_wstring(checks) << L"  Swaps :" << std::to_wstring(swaps) << L"\n";
+			if (sorted) break;
+		}
 	}
 }

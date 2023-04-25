@@ -9,7 +9,8 @@
 // Personal Includes
 #include "ConsoleLocaleFix.hpp"
 
-namespace anna {
+namespace anna 
+{
 	void displayData(std::vector<int> data);
 }
 
@@ -22,7 +23,8 @@ int main()
 	const int dataSetSize = 20;
 	unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
 
-	for (int i = 0; i < dataSetSize; i++) {
+	for (int i = 0; i < dataSetSize; i++) 
+	{
 		numberArray.push_back(i);
 	}
 
@@ -31,9 +33,21 @@ int main()
 	std::shuffle(numberArray.begin(), numberArray.end(), std::default_random_engine(seed));
 
 	anna::displayData(numberArray);
-
-	std::sort(numberArray.begin(), numberArray.end());
 	
+	for (int i = 0; i < numberArray.size() - 1; i++) 
+	{
+		for (int j = i + 1; j < numberArray.size(); j++)
+		{
+			if (numberArray[i] > numberArray[j]) {
+				int swap;
+				swap = numberArray[j];
+				numberArray[j] = numberArray[i];
+				numberArray[i] = swap;
+				anna::displayData(numberArray);
+			}
+		}
+	}
+
 	anna::displayData(numberArray);
 
 	std::cin.ignore(5);
@@ -43,19 +57,23 @@ int main()
 }
 
 
-namespace anna {
-	void displayData(std::vector<int> data) {
+namespace anna 
+{
+	void displayData(std::vector<int> data) 
+	{
 		
 		std::wstring topLine(L"╔");
 		std::wstring midLine(L"║");
 		std::wstring botLine(L"╚");
 
 		std::wstring stringData; 
-		for (auto&& slot : data) {
+		for (auto&& slot : data) 
+		{
 			stringData += (L" [" + std::to_wstring(slot) + L"] ");
 		}
 
-		for (auto&& value : stringData) {
+		for (auto&& value : stringData) 
+		{
 			topLine += L"═";
 			midLine += value;
 			botLine += L"═";

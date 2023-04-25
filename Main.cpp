@@ -98,9 +98,9 @@ namespace anna
 		botLine = botLine + L"╝";
 
 		std::wcout
-			<< topLine << "\n"
-			<< midLine << "\n"
-			<< botLine << "\n";
+			<< topLine << L"\n"
+			<< midLine << L"\n"
+			<< botLine << L"\n";
 
 	}
 }

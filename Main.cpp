@@ -9,10 +9,63 @@
 // Personal Includes
 #include "ConsoleLocaleFix.hpp"
 
-namespace anna 
+namespace anna
 {
-	void displayData(std::vector<int> data);
-	void bubbleSort(std::vector<int> numberArray);
+	template<typename T>
+	void displayData(std::vector<T> data)
+	{
+
+		std::wstring topLine(L"╔");
+		std::wstring midLine(L"║");
+		std::wstring botLine(L"╚");
+
+		std::wstring stringData;
+		for (auto&& slot : data)
+		{
+			stringData += (L" [" + std::to_wstring(slot) + L"] ");
+		}
+
+		for (auto&& value : stringData)
+		{
+			topLine += L"═";
+			midLine += value;
+			botLine += L"═";
+
+		}
+
+		topLine = topLine + L"╗";
+		midLine = midLine + L"║";
+		botLine = botLine + L"╝";
+
+		std::wcout
+			<< topLine << L"\n"
+			<< midLine << L"\n"
+			<< botLine << L"\n";
+
+	}
+
+	template<typename T>
+	void bubbleSort(std::vector<T> dataArray) {
+		for (int arrayEnd = dataArray.size() - 1; arrayEnd > 0; arrayEnd--)
+		{
+			static int swaps = 0;
+			static int checks = 0;
+			bool sorted = true;
+			for (int arrayScan = 0; arrayScan < dataArray.size() - 1; arrayScan++)
+			{
+				checks++;
+				if (dataArray[arrayScan] > dataArray[arrayScan + 1])
+				{
+					swaps++;
+					sorted = false;
+					std::swap(dataArray[arrayScan], dataArray[arrayScan + 1]);
+					anna::displayData(dataArray);
+				}
+			}
+			//std::wcout << L"Checks :" << std::to_wstring(checks) << L"  Swaps :" << std::to_wstring(swaps) << L"\n";
+			if (sorted) break;
+		}
+	}
 }
 
 
@@ -29,7 +82,7 @@ int main()
 		numberArray.push_back(i);
 	}
 
-	
+
 	anna::displayData(numberArray);
 
 	std::shuffle(numberArray.begin(), numberArray.end(), std::default_random_engine(seed));
@@ -47,59 +100,6 @@ int main()
 }
 
 
-namespace anna 
+namespace anna
 {
-	void displayData(std::vector<int> data) 
-	{
-		
-		std::wstring topLine(L"╔");
-		std::wstring midLine(L"║");
-		std::wstring botLine(L"╚");
-
-		std::wstring stringData; 
-		for (auto&& slot : data) 
-		{
-			stringData += (L" [" + std::to_wstring(slot) + L"] ");
-		}
-
-		for (auto&& value : stringData) 
-		{
-			topLine += L"═";
-			midLine += value;
-			botLine += L"═";
-			
-		}
-
-		topLine = topLine + L"╗";
-		midLine = midLine + L"║";
-		botLine = botLine + L"╝";
-
-		std::wcout
-			<< topLine << L"\n"
-			<< midLine << L"\n"
-			<< botLine << L"\n";
-
-	}
-
-	void bubbleSort(std::vector<int> numberArray) {
-		for (int arrayEnd = numberArray.size() - 1; arrayEnd > 0; arrayEnd--)
-		{
-			static int swaps = 0;
-			static int checks = 0;
-			bool sorted = true;
-			for (int arrayScan = 0; arrayScan < numberArray.size() - 1; arrayScan++)
-			{
-				checks++;
-				if (numberArray[arrayScan] > numberArray[arrayScan + 1])
-				{
-					swaps++;
-					sorted = false;
-					std::swap(numberArray[arrayScan], numberArray[arrayScan + 1]);
-					anna::displayData(numberArray);
-				}
-			}
-			//std::wcout << L"Checks :" << std::to_wstring(checks) << L"  Swaps :" << std::to_wstring(swaps) << L"\n";
-			if (sorted) break;
-		}
-	}
 }

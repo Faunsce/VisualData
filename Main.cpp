@@ -13,25 +13,23 @@
 int main()
 {
 	consoleFix::init_locale();
-	// Create a data set, be able to sort it, and display its elements visually
+
+	std::random_device rd{};
+	std::mt19937 engine{ rd() };
+
 	std::vector<int> numberArray;
 	const int dataSetSize = 20;
 	unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
-
-	for (int i = 0; i < dataSetSize; i++)
+	for (int i = 1; i <= dataSetSize; i++)
 	{
 		numberArray.push_back(i);
 	}
-
-
 	anna::displayData(numberArray);
 
-	std::shuffle(numberArray.begin(), numberArray.end(), std::default_random_engine(seed));
-
+	std::shuffle(numberArray.begin(), numberArray.end(), engine);
 	anna::displayData(numberArray);
 
 	anna::bubbleSort(numberArray);
-
 	anna::displayData(numberArray);
 
 	std::cin.ignore(5);

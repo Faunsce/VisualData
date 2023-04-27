@@ -19,7 +19,6 @@ int main()
 
 	std::vector<int> numberArray;
 	const int dataSetSize = 20;
-	unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
 	for (int i = 1; i <= dataSetSize; i++)
 	{
 		numberArray.push_back(i);

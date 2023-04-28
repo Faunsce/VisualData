@@ -23,7 +23,6 @@ int main()
 	{
 		numberArray.push_back(i);
 	}
-	anna::displayData(numberArray);
 
 	std::shuffle(numberArray.begin(), numberArray.end(), randomEngine);
 	anna::displayData(numberArray);

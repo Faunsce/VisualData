@@ -7,5 +7,5 @@ namespace anna
 	void displayData(std::vector<T> data);
 
 	template<typename T>
-	void bubbleSort(std::vector<T> dataArray);
+	std::vector<T> bubbleSort(std::vector<T> dataArray);
 }

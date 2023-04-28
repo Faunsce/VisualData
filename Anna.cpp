@@ -3,7 +3,8 @@
 #include <iostream>
 #include <vector>
 #include <string>
-
+#include <thread>
+#include <chrono>
 
 namespace anna
 {
@@ -34,14 +35,16 @@ namespace anna
 		botLine = botLine + L"╝";
 
 		std::wcout
+			<< L"\x1b[2J\x1b[H"
 			<< topLine << L"\n"
 			<< midLine << L"\n"
 			<< botLine << L"\n";
+		std::this_thread::sleep_for(std::chrono::milliseconds(1000 / 4));
 
 	}
 
 	template<typename T>
-	void bubbleSort(std::vector<T> dataArray) 
+	std::vector<T> bubbleSort(std::vector<T> dataArray) 
 	{
 		for (int arrayEnd = dataArray.size() - 1; arrayEnd > 0; arrayEnd--)
 		{
@@ -62,11 +65,12 @@ namespace anna
 			//std::wcout << L"Checks :" << std::to_wstring(checks) << L"  Swaps :" << std::to_wstring(swaps) << L"\n";
 			if (sorted) break;
 		}
+		return dataArray;
 	}
 
 	void linkFixFunction()
 	{
 		displayData(std::vector<int>{});
-		bubbleSort(std::vector<int>{});
+		std::vector<int> test = bubbleSort(std::vector<int>{});
 	}
 }

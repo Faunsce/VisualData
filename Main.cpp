@@ -14,8 +14,8 @@ int main()
 {
 	consoleFix::init_locale();
 
-	std::random_device rd{};
-	std::mt19937 engine{ rd() };
+	std::random_device randomSeed{}; 
+	std::mt19937 randomEngine{ randomSeed() };
 
 	std::vector<int> numberArray;
 	const int dataSetSize = 20;
@@ -25,7 +25,7 @@ int main()
 	}
 	anna::displayData(numberArray);
 
-	std::shuffle(numberArray.begin(), numberArray.end(), engine);
+	std::shuffle(numberArray.begin(), numberArray.end(), randomEngine);
 	anna::displayData(numberArray);
 
 	anna::bubbleSort(numberArray);

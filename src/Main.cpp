@@ -8,6 +8,7 @@
 // Personal Includes
 #include "ConsoleLocaleFix.hpp"
 #include "Anna.hpp"
+#include "Algos.hpp"
 
 
 int main()
@@ -21,13 +22,12 @@ int main()
 	const int dataSetSize = 20;
 	for (int i = 1; i <= dataSetSize; i++)
 	{
-		numberArray.push_back(i);
 	}
 
 	std::shuffle(numberArray.begin(), numberArray.end(), randomEngine);
 	anna::displayData(numberArray);
 
-	anna::bubbleSort(numberArray);
+	algos::bubbleSort(numberArray);
 	anna::displayData(numberArray);
 
 	std::cin.ignore(5);

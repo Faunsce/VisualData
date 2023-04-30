@@ -42,4 +42,9 @@ namespace anna
 		std::this_thread::sleep_for(std::chrono::milliseconds(1000 / 4));
 
 	}
+
+	void func()
+	{
+		displayData(std::vector<int> {});
+	}
 }

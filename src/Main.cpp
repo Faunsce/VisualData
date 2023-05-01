@@ -69,6 +69,10 @@ int main()
 				break;
 			}
 		}
+		if (std::stoi(userInput) > 20)
+		{
+			clean = false;
+		}
 	} while (!clean);
 
 	std::vector<int> numberArray;

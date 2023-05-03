@@ -131,7 +131,7 @@ int main()
 				break;
 			}
 		}
-		if (std::stoi(userInput) > 20)
+		if (clean && std::stoi(userInput) > 20)
 		{
 			clean = false;
 		}
@@ -147,7 +147,12 @@ int main()
 	std::shuffle(numberArray.begin(), numberArray.end(), randomEngine);
 	anna::displayData(numberArray);
 
-	algos::bubbleSort(numberArray);
+	auto dataHistory = algos::bubbleSort(numberArray);
+	for (const auto& dataState : dataHistory)
+	{
+		anna::displayData(dataState);
+		std::this_thread::sleep_for(std::chrono::milliseconds(100));
+	}
 	anna::displayData(numberArray);
 
 	std::cin.ignore(5);

@@ -39,7 +39,7 @@ void print(std::wstring header, std::wstring body)
 	std::vector<std::wstring> bodyArray{std::wstring()};
 	for (const auto& letter : body)
 	{
-		if (bodyArray[bodyArray.size() - 1].length() > printWidth)
+		if (bodyArray[bodyArray.size() - 1].length() >= printWidth)
 		{
 			bodyArray.push_back(std::wstring());
 		}

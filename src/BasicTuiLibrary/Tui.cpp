@@ -1,18 +1,26 @@
-﻿#include <iostream>
+﻿#include "Tui.hpp"
+
+#include <iostream>
 #include <string>
 #include <vector>
 
-namespace gui
+namespace tuilib
 {
-	inline constexpr std::wstring_view clearScreen = L"\x1b[2J\x1b[H";
+	Tui::Tui()
+	{
+		this->printWidth = 60;
+		this->printHeight = 40;
+		this->headerHeight = 2;
+		this->freeHeight = 3;
+		this->bodyHeight = 35;
+	}
 
-	const int printWidth = 60;
-	const int printHeight = 40;
-	const int headerHeight = 2;
-	const int freeHeight = 3;
-	const int bodyHeight = 35;
+	Tui::~Tui()
+	{
 
-	void print(std::wstring header, std::wstring body)
+	}
+
+	void Tui::print(std::wstring header, std::wstring body)
 	{
 		std::vector<std::wstring> page;
 
@@ -69,31 +77,3 @@ namespace gui
 		}
 	}
 }
-
-/*template<typename T>
-requires std::integral<T> || std::floating_point<T>
-void print(std::vector<T> dataArray)
-{
-	int arrayItemMaxSize = 1;
-	for (const auto& arrayItem : dataArray)
-	{
-		int itemLength = std::string(arrayItem).length();
-		if (itemLength > arrayItemMaxSize)
-		{
-			arrayItemMaxSize = std::string(arrayItem).length();
-		}
-	}
-
-	int containerSize = arrayItemMaxSize + 2;
-	int itemsPerLine = printWidth / containerSize;
-
-
-	print(L"Sorting array of X using the Y method", L"Your Data");
-}
-*/
-
-/*
-╔═╗
-║ ║
-╚═╝
-*/

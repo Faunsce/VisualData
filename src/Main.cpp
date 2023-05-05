@@ -10,15 +10,16 @@
 #include "ConsoleLocaleFix.hpp"
 #include "Anna.hpp"
 #include "Algos.hpp"
-#include "TextGuiLibrary/Gui.hpp"
+#include "BasicTuiLibrary/Tui.hpp"
 
 int main()
 {
 	consoleFix::init_locale();
 	std::random_device randomSeed{}; 
 	std::mt19937 randomEngine{ randomSeed() };
+	tuilib::Tui window;
 
-	gui::print(L"Welcome to my little program!",
+	window.print(L"Welcome to my little program!",
 		L"In this program you will be able to set a data array to a fixed length, shuffle it, then re - organize it using an algorithm of your choice!");
 	std::this_thread::sleep_for(std::chrono::seconds(5));
 	
@@ -26,7 +27,7 @@ int main()
 	bool clean;
 	do {
 		clean = true;
-		gui::print(L"Please enter the size of your data set!",
+		window.print(L"Please enter the size of your data set!",
 			L"You may enter a value between 10 and 100 for the size of the array.");
 		std::getline(std::wcin, userInput);
 		for (const auto& value : userInput)
